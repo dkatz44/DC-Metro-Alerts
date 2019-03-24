@@ -13,12 +13,6 @@ from datetime import datetime, time
 now = datetime.now()
 now_time = now.time()
 
-# 30 second sleep to make sure internet is connected
-#tm.sleep(30)
-
-# Run from start until 4:00PM
-#while now_time <= time(16,00):
-
 northOfCrystalCity = [
 'C01',
 'C02',
@@ -100,7 +94,7 @@ while now_time <= time(8,40) or (now_time >= time(16,35) and now_time <= time(17
     
     headers = {
         # Request headers
-        'api_key': 'c0fc1d5bb8844776a7a9c68195193c10',
+        'api_key': '',
     }
     
     params = 'K01, C09, C05'
@@ -131,9 +125,7 @@ while now_time <= time(8,40) or (now_time >= time(16,35) and now_time <= time(17
         combinedData = combinedData[
             ((combinedData['LocationName'] == 'CC') & (combinedData['DestinationCode'].isin(northOfCrystalCity) == True)) |
             ((combinedData['LocationName'] == 'RS') & (combinedData['DestinationCode'].isin(westOfRosslyn) == True))]
-    
-    #combinedData.query("(LocationName == 'CH') & (Destination in ['Largo', 'NewCrltn', 'Rosslyn'])")
-    
+        
     combinedData = combinedData.drop(['DestinationCode', 'Group', 'DestinationName', 'LocationCode'], axis=1)
     
     combinedData['Min'] = combinedData['Min'].replace('','XX')
