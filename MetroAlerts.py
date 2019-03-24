@@ -197,8 +197,6 @@ while now_time <= time(8,40) or (now_time >= time(16,35) and now_time <= time(17
     now = datetime.now()
     now_time = now.time()
     print("Loop starting:", now_time)
-#    print(now.time())
-#    break
 
 cmd = "osascript<<END\n"
 cmd = cmd + """tell application "Messages" \n"""
